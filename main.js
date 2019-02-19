@@ -28,6 +28,15 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  setInterval(()=> {
+    if (process.send) {
+      console.log('Sending message from child');
+      process.send('test');
+    } else {
+      console.log('IPC with parent process not enabled')
+    }
+  }, 2000);
 }
 
 // This method will be called when Electron has finished
